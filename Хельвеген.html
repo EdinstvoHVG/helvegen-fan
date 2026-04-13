@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>HELVEGEN | Фан-сайт & Единство</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800;900&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0A0A0C;
+            --bg-secondary: #111218;
+            --bg-card: rgba(20, 22, 32, 0.75);
+            --text-primary: #ECE8E0;
+            --text-secondary: #B8AD9A;
+            --accent-primary: #C27E3A;
+            --accent-secondary: #8B5A2B;
+            --border-color: #2C2A28;
+            --hero-gradient: linear-gradient(145deg, #050505 0%, #1A1612 100%);
+        }
+
+        body.light {
+            --bg-primary: #E8E2D4;
+            --bg-secondary: #F5EFE2;
+            --bg-card: rgba(250, 245, 235, 0.9);
+            --text-primary: #2E2A24;
+            --text-secondary: #5A4E3E;
+            --accent-primary: #B45F2A;
+            --accent-secondary: #8B4513;
+            --border-color: #CBB99A;
+            --hero-gradient: linear-gradient(145deg, #DDD2BF 0%, #F5EDE0 100%);
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            background-image: 
+                repeating-linear-gradient(45deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 2px, transparent 2px, transparent 8px),
+                repeating-linear-gradient(135deg, rgba(194,126,58,0.02) 0px, rgba(194,126,58,0.02) 1px, transparent 1px, transparent 12px),
+                radial-gradient(ellipse at 20% 40%, rgba(80,180,120,0.03) 0%, transparent 50%),
+                radial-gradient(ellipse at 90% 70%, rgba(120,100,200,0.03) 0%, transparent 60%);
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.5;
+            transition: background 0.3s, color 0.2s;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+
+        body::before {
+            content: "ᚠ\A ᚢ\A ᚦ\A ᚨ\A ᚱ\A ᚲ\A ᚷ\A ᚹ\A ᚺ\A ᚾ\A ᛁ\A ᛃ\A ᛇ\A ᛈ\A ᛉ\A ᛊ\A ᛏ\A ᛒ\A ᛖ\A ᛗ\A ᛚ\A ᛜ\A ᛞ\A ᛟ";
+            position: fixed; left: 10px; top: 50%; transform: translateY(-50%);
+            font-family: monospace; font-size: 32px; white-space: pre;
+            color: var(--accent-primary); opacity: 0.15; pointer-events: none; z-index: 0;
+        }
+
+        body::after {
+            content: "ᚠ\A ᚢ\A ᚦ\A ᚨ\A ᚱ\A ᚲ\A ᚷ\A ᚹ\A ᚺ\A ᚾ\A ᛁ\A ᛃ\A ᛇ\A ᛈ\A ᛉ\A ᛊ\A ᛏ\A ᛒ\A ᛖ\A ᛗ\A ᛚ\A ᛜ\A ᛞ\A ᛟ";
+            position: fixed; right: 10px; top: 50%; transform: translateY(-50%);
+            font-family: monospace; font-size: 32px; white-space: pre;
+            color: var(--accent-primary); opacity: 0.15; pointer-events: none; z-index: 0;
+        }
+
+        .hero::before {
+            content: "ᚨ ᚱ ᚨ ᚾ ᛞ ᛟ ᛗ ᛗ ᛖ ᚱ ᚲ ᚨ ᛏ";
+            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+            font-family: monospace; font-size: 14px; white-space: nowrap;
+            color: var(--accent-primary); opacity: 0.2; letter-spacing: 8px; pointer-events: none;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .navbar {
+            background: rgba(10, 10, 14, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--accent-primary);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+.logo a {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #E4A35A, #9C5824);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 4px;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Cinzel', serif;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .nav-links a:hover { color: var(--accent-primary); }
+
+        .theme-toggle {
+            position: fixed; bottom: 20px; right: 20px;
+            background: var(--accent-primary); border: none; border-radius: 40px;
+            padding: 8px 18px; cursor: pointer; font-weight: bold; z-index: 200;
+            font-family: 'Cinzel', serif;
+        }
+
+        .go-top {
+            position: fixed; bottom: 80px; right: 20px;
+            background: var(--accent-primary); color: #05070A; width: 48px; height: 48px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            text-decoration: none; font-size: 1.8rem; opacity: 0; visibility: hidden;
+            transition: 0.2s; z-index: 99;
+        }
+        .go-top.show { opacity: 1; visibility: visible; }
+
+        section { padding: 3rem 0; border-bottom: 1px solid var(--border-color); }
+
+        .section-title {
+            font-family: 'Cinzel', serif; font-size: 2rem; font-weight: 700;
+            margin-bottom: 2rem; display: inline-block; text-transform: uppercase;
+            position: relative;
+        }
+        .section-title:after {
+            content: ''; position: absolute; bottom: -8px; left: 0;
+            width: 70px; height: 3px; background: var(--accent-primary);
+        }
+
+        .members-grid, .merch-grid, .music-grid, .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .member-card {
+            background: var(--bg-card); backdrop-filter: blur(4px);
+            border-radius: 28px; padding: 1.5rem;
+            border: 1px solid var(--border-color); text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .member-card:hover { transform: translateY(-6px); border-color: var(--accent-primary); }
+
+        .member-photo {
+            width: 100%; aspect-ratio: 1 / 1; object-fit: cover;
+            border-radius: 50%; margin-bottom: 1rem;
+            border: 2px solid var(--accent-primary);
+            cursor: pointer;
+        }
+
+        .group-photo {
+            width: 100%; border-radius: 28px; margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .member-name { font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 700; }
+        .member-role { color: var(--accent-primary); font-weight: 500; }
+
+        .countdown {
+            background: var(--bg-card); backdrop-filter: blur(4px);
+            border-radius: 28px; padding: 1rem; text-align: center;
+            font-size: 1.4rem; font-weight: bold; margin-bottom: 2rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        #map {
+            width: 100%; height: 400px; border-radius: 28px;
+            margin-top: 1rem; border: 1px solid var(--border-color);
+        }
+
+        .video-wrapper {
+            position: relative; padding-bottom: 56.25%; height: 0; margin: 1rem 0;
+        }
+        .video-wrapper iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 24px; border: 1px solid var(--border-color);
+        }
+
+        .share-buttons {
+            display: flex; gap: 1rem; justify-content: center; margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+.subscribe-form {
+            display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;
+        }
+        .subscribe-form input {
+            padding: 8px 16px; border-radius: 40px; border: none;
+            background: var(--bg-primary); color: var(--text-primary);
+            width: 220px;
+        }
+
+        .btn {
+            background: var(--accent-primary); border: none; padding: 8px 20px;
+            border-radius: 40px; cursor: pointer; font-weight: bold;
+            display: inline-block; text-decoration: none; color: #0A0A0C;
+            font-family: 'Cinzel', serif; margin-top: 0.5rem;
+        }
+        .btn-outline { background: transparent; border: 1px solid var(--accent-primary); color: var(--accent-primary); }
+
+        footer {
+            background: rgba(0,0,0,0.5); text-align: center; padding: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Стили для текстов песен */
+        .lyrics-text {
+            font-family: 'Courier New', 'Inter', monospace;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: rgba(0,0,0,0.3);
+            padding: 1rem;
+            border-radius: 20px;
+            margin-top: 1rem;
+            white-space: pre-line;
+            text-align: left;
+        }
+        
+        /* Стили для модального окна */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            backdrop-filter: blur(8px);
+            cursor: pointer;
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 16px;
+            border: 2px solid var(--accent-primary);
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: var(--accent-primary);
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .close-modal:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 2.2rem; }
+            .section-title { font-size: 1.6rem; }
+            .navbar .container { flex-direction: column; text-align: center; }
+            .nav-links { justify-content: center; }
+            body::before, body::after { font-size: 18px; opacity: 0.1; }
+            .countdown { font-size: 1rem; }
+            #map { height: 300px; }
+            .lyrics-text { font-size: 0.9rem; padding: 0.8rem; }
+            .modal-content { max-width: 95%; max-height: 85%; }
+            .close-modal { top: 10px; right: 20px; font-size: 30px; }
+        }
+/* Кнопка Play/Pause для треков */
+.track-btn {
+    background: var(--accent-primary);
+    border: none;
+    border-radius: 40px;
+    padding: 10px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    margin: 0.5rem 0;
+    transition: 0.2s;
+}
+.track-btn:hover {
+    background: var(--accent-secondary);
+    transform: scale(1.02);
+}
+.track-error {
+    color: #ff8888;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" id="themeToggle">🌙 Тёмная тема</button>
+    <a href="#" class="go-top" id="goTop">↑</a>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><a href="#">ᚺᛖᛚᚹᛖᚷᛖᚾ</a></div>
+            <ul class="nav-links">
+                <li><a href="#about">О группе</a></li>
+                <li><a href="#members">Участники</a></li>
+                <li><a href="#concerts">Концерты</a></li>
+                <li><a href="#map">Карта тура</a></li>
+                <li><a href="#video">Видео</a></li>
+                <li><a href="#edinstvo">Единство</a></li>
+                <li><a href="#gallery-band">Галерея</a></li>
+                <li><a href="#merch">Мерч</a></li>
+                <li><a href="#music">Слушать</a></li>
+                <li><a href="#lyrics">Тексты</a></li>
+            </ul>
+        </div>
+    </nav>
+<header class="hero">
+        <div class="container">
+            <h1 style="font-family: 'Cinzel', serif; font-size: 3.8rem;">ᚺᛖᛚᚹᛖᚷᛖᚾ</h1>
+            <div style="color: var(--accent-primary); font-family: 'Cinzel', serif;">FOLKCORE · ЭКЛЕКТИКА ВРЕМЁН</div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="about">
+            <h2 class="section-title">О группе</h2>
+            <div class="member-card" style="text-align: left;">
+                <img class="group-photo" src="https://sun9-21.userapi.com/s/v1/ig2/yz23oKUKZ2jNuI-FfVf253VG0zscXLp27gVGuro3bOekHerAqfTCIl4F_Jw0wySUcP1mvCaqTFA26Ou01CWGbUdx.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x426,720x480,1080x720,1280x853,1440x960,2560x1706&from=bu&cs=2560x0" alt="Helvegen группа">
+                <p>HELVEGEN — проект из Липецка, основанный Дмитрием Коняхиным в 2021. Жанр folkcore: сплав этники, металла и киберпанка. Дебютный альбом «Горизонт событий» (2024).</p>
+                <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 28px; margin-top: 1rem;">
+                    «Я воскликну слава роду, Слава русскому народу,<br>За руки возьмёмся братцы, Заплетёмся хороводом»
+                </div>
+            </div>
+        </section>
+
+        <section id="members">
+            <h2 class="section-title">Участники группы</h2>
+            <div class="members-grid">
+                <div class="member-card"><img class="member-photo" src="https://sun9-32.userapi.com/s/v1/ig2/DzNkGaCsBVSA8YpIMw5QMhPZ5qvt8T2WxdFsxoUKeu91081MpDxNEQ9PpIckpW0RjODfY618kTR18YVO5CY6eDtB.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0" alt="Дима Коняхин"><div class="member-name">Дмитрий Коняхин</div><div class="member-role">Фронтмен, основатель</div><a href="https://vk.com/dimahelvegen" target="_blank" class="btn">VK</a></div>
+                <div class="member-card"><img class="member-photo" src="https://sun9-61.userapi.com/s/v1/ig2/0wuB3TKHQ1ujXqbXym_XWYxDkakTq9UuXFk4lCimd-3rdwTHovVSVGygif7i5ahU2yWN-QXWdXFhLaT9je1r5l2U.jpg?quality=95&as=32x48,48x72,72x108,108x162,160x240,240x360,360x540,480x720,540x810,640x960,720x1080,1080x1621,1280x1921,1440x2161,1706x2560&from=bu&cs=1706x0" alt="Юлиана Хожайнова"><div class="member-name">Юлиана Хожайнова</div><div class="member-role">Вокалистка</div><a href="https://vk.com/juliana_helvegen" target="_blank" class="btn">VK</a></div>
+                <div class="member-card"><img class="member-photo" src="https://sun9-67.userapi.com/s/v1/ig2/b-B055zO_yyD8JbGPG8M48JHiL0Z-UXaBxS-HBIy3Mw7Lv-Ljn7sYGFEnrxq_7fxe9I4CQb_yAk1IA40rP3eMTEs.jpg?quality=95&as=32x59,48x88,72x133,108x199,160x295,240x442,360x663,480x885,540x995,640x1180,720x1327&from=bu&cs=720x0" alt="Михаил Потапов"><div class="member-name">Михаил Потапов</div><div class="member-role">Гитарист</div><a href="https://vk.com/michaelguitars" target="_blank" class="btn">VK</a></div>
+                <div class="member-card"><img class="member-photo" src="https://sun25-1.userapi.com/s/v1/ig2/Om4BhKlV8WvbJS98lskB5RxFPwS7skCHk9UKNPrqrT_AvSUBEdYooYneX2GMq96qBbfqwLpr8xwRyd1mSOz478Z2.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&cs=2560x0" alt="Евгений Корольков"><div class="member-name">Евгений Корольков</div><div class="member-role">Басист</div><a href="https://vk.com/id29595496" target="_blank" class="btn">VK</a></div>
+                <div class="member-card"><img class="member-photo" src="https://sun9-77.userapi.com/s/v1/ig2/MFx3NDVnel-Ugl1KKkshkfAbCY4rrd2OtI6oqmfEOk7-K_d5e55hvDd7rFisI4TB9M35HUuAF81OrcdlBvM3YA-j.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&cs=2560x0" alt="Геннадий Семенихин"><div class="member-name">Геннадий Семенихин</div><div class="member-role">Барабанщик</div><a href="https://vk.ru/gs666" target="_blank"
+class="btn">VK</a></div>
+            </div>
+        </section>
+
+        <section id="concerts">
+            <h2 class="section-title">Ближайшие ритуалы</h2>
+            <div class="members-grid">
+                <!-- АПРЕЛЬ 2026 -->
+                <div class="member-card"><strong>21 апреля 2026 · Воронеж</strong><br>ЖЕЛТЫЙ НОСОРОГ<br><a href="https://qtickets.ru/event/224974" target="_blank" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>22 апреля 2026 · Рязань</strong><br>VALHALLA LOUNGE<br><a href="https://qtickets.ru/event/224977" target="_blank" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>23 апреля 2026 · Москва</strong><br>АНТИКАФЕ PROSPECT<br><a href="https://qtickets.ru/event/224980" target="_blank" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>28 апреля 2026 · Тамбов</strong><br>CITY PLAY<br><a href="https://qtickets.ru/event/224983" target="_blank" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>29 апреля 2026 · Тула</strong><br>СУП С КОТОМ<br><a href="https://qtickets.ru/event/224988" target="_blank" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>30 апреля 2026 · Липецк</strong><br>ROB ROY BAR<br><a href="https://qtickets.ru/event/224991" target="_blank" class="btn">Купить билет</a></div>
+                
+                <!-- МАЙ 2026 (ссылок пока нет) -->
+                <div class="member-card"><strong>16 мая 2026 · Нижний Новгород</strong><br><a href="https://hvgnn.ticketscloud.org/" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>17 мая 2026 · Казань</strong><br><a href="https://hvgkzn.ticketscloud.org/" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>20 мая 2026 · Уфа </strong><br><a href="https://ogni-ufa.ru/afisha/1197/" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>21 мая 2026 · Пермь</strong><br><a href="https://hvgprm.ticketscloud.org/" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>22 мая 2026 · Екатеринбург</strong><br><a href="https://hvgekb.ticketscloud.org/" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>23 мая 2026 · Тюмень</strong><br><a href="https://hvgtmn.ticketscloud.org/" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>24 мая 2026 · Челябинск</strong><br><a href="https://hvgclb.ticketscloud.org/" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>27 мая 2026 · Самара</strong><br><a href="https://hvgsmr.ticketscloud.org/" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>28 мая 2026 · Рязань</strong><br><a href="https://hvgrzn.ticketscloud.org/" class="btn">Купить билет</a></div>
+                
+                <!-- ОКТЯБРЬ 2026 (ссылок пока нет) -->
+                <div class="member-card"><strong>17 октября 2026 · Краснодар</strong><br><a href="https://qtickets.ru/event/208460" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>18 октября 2026 · Новороссийск</strong><br><a href="https://novorossijsk.qtickets.events/209823-helvegen-1810-i-pena-pab" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>20 октября 2026 · Симферополь</strong><br><a href="https://qtickets.ru/event/208468" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>21 октября 2026 · Севастополь</strong><br><a href="https://qtickets.ru/event/208471" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>24 октября 2026 · Донецк</strong><br><a href="https://donetsk.qtickets.events/208626-helvegen" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>24 октября 2026 · Ростов-на-Дону</strong><br><a href="https://qtickets.ru/event/208472" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>25 октября 2026 · Воронеж</strong><br><a href="https://qtickets.ru/event/208475" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>30 октября 2026 · Орел</strong><br><a href="https://qtickets.ru/event/208479" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>31 октября 2026 · Тула</strong><br><a href="https://qtickets.ru/event/208480" class="btn">Купить билет</a></div>
+                
+                <!-- НОЯБРЬ 2026 -->
+                <div class="member-card"><strong>1 ноября 2026 · Тамбов</strong><br><a href="https://qtickets.ru/event/208484" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>6 ноября 2026 · Курск</strong><br><a href="https://qtickets.ru/event/208491" class="btn">Купить билет</a></div>
+                <div class="member-card"><strong>7 ноября 2026 · Белгород</strong><br><a href="https://qtickets.ru/event/208496" class="btn">Купить билет</a></div>
+            </div>
+        </section>
+        <section id="video">
+            <h2 class="section-title">Видеохроники</h2>
+            <div class="member-card">
+                <div class="member-name">Helvegen — «К белым берегам» (LIVE)</div>
+                <p style="margin: 1rem 0;">Смотрите официальное видео на YouTube — подписывайтесь на канал группы, чтобы не пропустить новые клипы и концертные записи.</p>
+                <a href="https://youtu.be/jlQIINLUXcg" target="_blank" class="btn">Смотреть на YouTube →</a>
+                <p style="margin-top: 1rem; font-size: 0.8rem;">🎬 Также больше видео в нашем <a href="https://t.me/EdinstvoHVG">Telegram «Единства»</a>.</p>
+            </div>
+        </section>
+
+        <section id="edinstvo">
+            <h2 class="section-title">Единство (Hill Wigan)</h2>
+            <div class="members-grid">
+                <div class="member-card">
+                    <img class="member-photo" src="https://sun9-73.userapi.com/s/v1/ig2/S8AV0bZ2PGcWjlrjoj4VgeOs4jC7urthqq_L3qGa5BPH2PW3q2rgYgVMhlzpn41B-3h4-j4QJokOWy47qEb0EPCV.jpg?quality=95&as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720,996x996&from=bu&cs=996x0" alt="Логотип Единства">
+                    <div class="member-name">Наш логотип</div>
+                    <div class="member-role">Фан-объединение</div>
+                    <div><a href="https://t.me/EdinstvoHVG" class="btn">Telegram</a> <a href="https://vk.ru/edinstvohvg" class="btn btn-outline">VK</a></div>
+                </div>
+                <div class="member-card">
+                    <img class="member-photo" src="https://sun9-23.userapi.com/s/v1/ig2/GDIHJCeToNgAa2xFfjTyu1mA11ljH-g5aCtKw-uixtMyKbPpkWzZhp9h55rLkurQTe7-BwMQbDa2-Y_zmGzJy9kB.jpg?quality=95&crop=0,0,1280,721&as=32x18,48x27,72x41,108x61,160x90,240x135,360x203,480x270,540x304,640x360,720x406,1080x608,1280x721&from=bu&cs=1280x0" alt="Участники Единства">
+                    <div class="member-name">Наша дружина</div>
+                    <div class="member-role">Актив объединения</div>
+                </div>
+            </div>
+            <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 28px; margin-top: 1rem;">
+                «Блеск меча и головы летят,<br>Нет печали будто ты дитя,<br>Свора воинов словно воронов,<br>Где чья сторона?»
+            </div>
+        </section>
+
+        <section id="gallery-band">
+            <h2 class="section-title">Helvegen на концертах</h2>
+            <div class="gallery-grid">
+                <div class="member-card"><img class="member-photo" src="https://i.ibb.co/9mYsXbsW/IMG-20260407-230801-234.jpg" alt="Helvegen концерт"><div class="member-name">Фанаты</div></div>
+<div class="member-card"><img class="member-photo" src="https://i.ibb.co/QjdkM13z/IMG-20260408-095955-689.jpg" alt="Helvegen концерт"><div class="member-name">Дмитрий и Юлиана</div></div>
+                <div class="member-card"><img class="member-photo" src="https://i.ibb.co/Jjz66JgG/IMG-20260408-095639-292.jpg" alt="Helvegen концерт"><div class="member-name">Атмосфера</div></div>
+                <div class="member-card"><img class="member-photo" src="https://i.ibb.co/qFX9TLrQ/IMG-20260408-095643-046.jpg" alt="Helvegen концерт"><div class="member-name">HELVEGEN</div></div>
+                <div class="member-card"><img class="member-photo" src="https://i.ibb.co/DDPKgzt2/IMG-20260408-100017-779.jpg" alt="Helvegen концерт"><div class="member-name">Сцена</div></div>
+                <div class="member-card"><img class="member-photo" src="https://i.ibb.co/d07wNxSn/IMG-20260408-095635-820.jpg" alt="Helvegen концерт"><div class="member-name">За кулисами</div></div>
+                <div class="member-card"><img class="member-photo" src="https://i.ibb.co/39txHX7C/IMG-20260408-100123-887.jpg" alt="Helvegen концерт"><div class="member-name">Эмоции</div></div>
+                <div class="member-card"><img class="member-photo" src="https://i.ibb.co/V0Mf7CVf/IMG-20260408-100118-686.jpg" alt="Helvegen концерт"><div class="member-name">Свет</div></div>
+                <div class="member-card"><img class="member-photo" src="https://i.ibb.co/ZzsgkZvP/IMG-20260408-100054-662.jpg" alt="Helvegen концерт"><div class="member-name">Движение</div></div>
+                <div class="member-card"><img class="member-photo" src="https://i.ibb.co/ccFYPpQS/IMG-20260408-100051-584.jpg" alt="Helvegen концерт"><div class="member-name">Дружба</div></div>
+                <div class="member-card"><img class="member-photo" src="https://i.ibb.co/qMcJbWdn/IMG-20260408-100352-969.jpg" alt="Helvegen концерт"><div class="member-name">Рок</div></div>
+                <div class="member-card"><img class="member-photo" src="https://i.ibb.co/spkBTT6Q/IMG-20260408-100336-653.jpg" alt="Helvegen концерт"><div class="member-name">Драйв</div></div>
+                <div class="member-card"><img class="member-photo" src="https://i.ibb.co/7xk0411G/IMG-20260408-100246-360.jpg" alt="Helvegen концерт"><div class="member-name">Толпа</div></div>
+                <div class="member-card"><img class="member-photo" src="https://i.ibb.co/BXF5LRn/IMG-20260408-100147-269.jpg" alt="Helvegen концерт"><div class="member-name">Финал</div></div>
+            </div>
+        </section>
+
+        <section id="merch">
+            <h2 class="section-title">Мерч</h2>
+            <div class="merch-grid">
+                <div class="member-card"><strong>Официальный мерч Helvegen</strong><a href="https://helvegen.ru" target="_blank" class="btn">Перейти в магазин →</a></div>
+                <div class="member-card"><strong>Мерч «Единства»</strong><p>Футболка + стикеры. Заказ через казначея.</p><a href="https://t.me/demmis102" target="_blank" class="btn">Написать казначею →</a></div>
+            </div>
+        </section>
+
+        <section id="music">
+            <h2 class="section-title">Слушать Helvegen</h2>
+            <div class="music-grid">
+                <div class="member-card"><strong>Яндекс.Музыка</strong><a href="https://music.yandex.by/artist/11236916" target="_blank" class="btn">Слушать →</a></div>
+                <div class="member-card"><strong>VK Музыка</strong><a href="https://vk.ru/artist/8808001595357896267" target="_blank" class="btn">Слушать →</a></div>
+                <div class="member-card"><strong>Spotify</strong><a href="https://open.spotify.com/artist/5mLHzJYo6AaP3tTXKaFhFY?si=Djx4ygFkSJGsP8gaDASpGQ" target="_blank" class="btn">Слушать →</a></div>
+                <div class="member-card"><strong>Apple Music</strong><a href="https://music.apple.com/ru/artist/helvegen/1071608383" target="_blank" class="btn">Слушать →</a></div>
+            </div>
+        </section>
+<section id="lyrics">
+            <h2 class="section-title">Тексты песен</h2>
+            <div class="members-grid">
+                
+              <!-- Слава роду -->
+                <div class="member-card">
+                    <div class="member-name">Слава роду</div>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--accent-primary);">Аккорды: A#m | C# G# | A#m | C# G# | A#m</p>
+                    
+                    <a href="https://open.spotify.com/track/2NEldkM506IJXX0DoRqtdx" target="_blank" class="btn">Слушать на Spotify →</a>
+                    
+                    <div class="lyrics-text">
+[Куплет 1]:
+F#     F    A#m         F#      F      A#m
+Да широка река моя, там дым твоего костра, да я
+   F#       F        A#m                  F#     F
+С дальнего бережка, там найду тебя, проведу тебя я
+
+[Пред-припев]:
+A#m                   F#        F
+Ты только дай, ты мне дай, ты подай мне руку
+A#m              F#        F
+Не напугай, не ругай, не наведай скуку
+A#m              F#        F
+Мы за одно, мы одни, мы другими стали
+A#m               F#    F
+Наши с тобой времена настали!
+
+[Припев]:
+F#                           D#m
+Я воскликну - «Слава роду! Слава русскому народу!
+A#m                       G#
+За руки возьмемся братцы, заплетёмся хороводом»
+F#                            D#m
+И воскликнем - «Слава роду! Слава русскому народу!
+A#m                    G#
+Ритмам музыки отдаться под простором небосвода»
+
+[Куплет 2]:
+    A#m                   F#           F
+Снегами декабрьских зим, первым лучом марта
+ A#m                F#         F
+Холодно невыносимо, а на душе жарко
+  A#m              F#        F
+Свежей берестой, сладкой смородиной
+  A#m                F#    F
+Проводи меня домой, милая Родина
+
+[Пред-припев]:
+A#m                   F#        F
+Ты только дай, ты мне дай, ты подай мне руку
+A#m              F#        F
+Не напугай, не ругай, не наведай скуку
+A#m              F#        F
+Мы за одно, мы одни, мы другими стали
+A#m               F#    F
+Наши с тобой времена настали!
+
+[Припев] (2 раза):
+F#                           D#m
+Я воскликну - «Слава роду! Слава русскому народу!
+A#m                       G#
+За руки возьмемся братцы, заплетёмся хороводом»
+F#                            D#m
+И воскликнем - «Слава роду! Слава русскому народу!
+A#m                    G#
+Ритмам музыки отдаться под простором небосвода»
+                    </div>
+                </div>
+                
+             <!-- Жатва -->
+                <div class="member-card">
+                    <div class="member-name">Жатва</div>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--accent-primary);">Аккорды: Dm | C | Gm | A</p>
+                    
+                    <a href="https://open.spotify.com/track/4FjvVEOvqttji5UBrdXYn4" target="_blank" class="btn">Слушать на Spotify →</a>
+                    
+                    <div class="lyrics-text">
+[Текст песни "Жатва"]
+
+Dm
+Собирает, собирает, собирает наши души
+Gm
+Собирает, собирает, собирает наши души
+Dm
+Собирает, собирает, собирает наши души
+Gm
+Собирает, собирает, собирает наши души
+
+[Куплет 1]:
+Dm           C
+За лесом, за речкой
+Dm           C
+Долетят словечки
+Dm           C
+За глухим туманом
+Gm           A
+Порастет бурьяном
+Dm           C
+Да в дальние дали
+Dm           C
+Спрячешься едва ли
+Dm           C
+Не вернешься в сени к ночи
+Gm           A
+Да мне нагадали
+
+[Припев]:
+Dm
+Осени колесо повернулось на засов
+Двери от голосов будто в поле колосок
+Серпом да до низов, а потом за поясок
+Жатва и Жива от тебя на волосок
+
+Dm        C
+С поля да донеси
+Gm          A
+По ветру да весточку
+Dm        C
+Долго ли коротко ли
+Gm          A
+Виться да веточке
+
+Собирает, собирает, собирает наши души
+Раз..Два.. ЖАТВА
+
+[Куплет 2]:
+Dm           C
+За лесом, за речкой
+Dm           C
+Выльются словечки
+Dm           C
+В заговоры, ковы
+Gm           A
+Вражие оковы
+Dm           C
+Выйдем братцы в поле
+Dm           C
+По Сворожей воле
+Dm           C
+Дабы год был урожайный
+Gm           A
+Будь готовым к бою
+
+[Припев]:
+Dm
+Осени колесо повернулось на засов
+Двери от голосов будто в поле колосок
+Серпом да до низов, а потом за поясок
+Жатва и Жива от тебя на волосок
+
+Dm        C
+С поля да донеси
+Gm          A
+По ветру да весточку
+Dm        C
+Долго ли коротко ли
+Gm          A
+Виться да веточке
+
+[Куплет 3]:
+Dm           C
+Выходили из заводи
+Dm           C
+Вилами, но не по воде
+Dm           C
+Почему мне кажется
+Gm           A
+Ты пришла не ватажиться
+Dm           C
+Ой же вы, гой еси
+Dm           C
+Урожая принеси
+Dm           C
+Здесь земля не пашется
+Gm           A
+И что-то тут не вяжется
+
+[Припев]:
+Dm        C
+С поля да донеси
+Gm          A
+По ветру да весточку
+Dm        C
+Долго ли коротко ли
+Gm          A
+Виться да веточке
+                    </div>
+                </div>
+                
+            </div>
+            <p style="margin-top: 1rem; text-align: center;">📖 Больше текстов скоро появятся. Присылайте свои любимые песни в <a href="https://t.me/EdinstvoHVG">Telegram «Единства»</a>.</p>
+        </section>
+
+        <section id="fanart">
+            <h2 class="section-title">Фан-арт</h2>
+            <div class="members-grid">
+                <div class="member-card"><div class="member-name">🎨 Рисунки фанатов</div><p>Присылайте свои работы в Telegram «Единства» — и они появятся здесь!</p><a href="https://t.me/EdinstvoHVG" class="btn">Отправить</a></div>
+                <div class="member-card"><div class="member-name">📸 Видео с концертов</div><p>Любительская съёмка. Станьте частью истории.</p><a href="https://t.me/EdinstvoHVG" class="btn">Поделиться</a></div>
+            </div>
+        </section>
+
+        <section id="thanks">
+            <h2 class="section-title">Благодарности</h2>
+            <div class="member-card"><p>✨ Спасибо всем, кто помогает «Единству» расти и поддерживает Helvegen! Особая благодарность Дмитрию Коняхину за вдохновение и музыку. ✨</p><p style="margin-top: 0.5rem;">🙏 Тильда: каждый, кто зажигает огни, дарит подарки и создаёт атмосферу.</p></div>
+        </section>
+
+        <section id="subscribe">
+            <h2 class="section-title">Будь в курсе</h2>
+            <div class="member-card">
+                <form class="subscribe-form" action="https://formsubmit.co/edinstvo.hvg@gmail.com" method="POST">
+                    <input type="email" name="email" placeholder="Твой e-mail" required>
+                    <button type="submit" class="btn">Подписаться</button>
+                </form>
+                <p style="margin-top: 1rem; font-size: 0.8rem;">*Новости, анонсы, конкурсы — только для своих.</p>
+            </div>
+        </section>
+
+        <div class="share-buttons">
+            <a href="https://vk.com/share.php?url=https://helvegen-fan.ru" target="_blank" class="btn">Поделиться VK</a>
+            <a href="https://t.me/share/url?url=https://helvegen-fan.ru&text=Helvegen%20фанатский%20сайт" target="_blank" class="btn">Поделиться Telegram</a>
+            <a href="https://wa.me/?text=https://helvegen-fan.ru" target="_blank" class="btn">WhatsApp</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>ᚺᛖᛚᚹᛖᚷᛖᚾ · Единство · 2026</p>
+        <p><a href="https://t.me/helvegenmusic" target="_blank" style="color: var(--accent-primary);">Telegram группы</a> | <a href="https://vk.ru/helvegenmusic" target="_blank" style="color: var(--accent-primary);">VK группы</a> | <a href="https://youtube.com/@helvegentube" target="_blank" style="color: var(--accent-primary);">YouTube</a> | <a href="https://t.me/EdinstvoHVG" target="_blank" style="color: var(--accent-primary);">Telegram Единства</a> | <a href="https://vk.ru/edinstvohvg" target="_blank" style="color: var(--accent-primary);">VK Единства</a></p>
+    </footer>
+<!-- Модальное окно для просмотра фото -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+    <script>
+        const toggleBtn = document.getElementById('themeToggle');
+        const body = document.body;
+        if(localStorage.getItem('theme') === 'light') body.classList.add('light');
+        toggleBtn.addEventListener('click', () => {
+            body.classList.toggle('light');
+            localStorage.setItem('theme', body.classList.contains('light') ? 'light' : 'dark');
+            toggleBtn.textContent = body.classList.contains('light') ? '☀️ Светлая' : '🌙 Тёмная';
+        });
+        toggleBtn.textContent = body.classList.contains('light') ? '☀️ Светлая' : '🌙 Тёмная';
+
+        const goTopBtn = document.getElementById('goTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) goTopBtn.classList.add('show');
+            else goTopBtn.classList.remove('show');
+        });
+        goTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+         const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeModal = document.querySelector('.close-modal');
+        const galleryPhotos = document.querySelectorAll('#gallery-band .member-photo, #edinstvo .member-photo');
+        galleryPhotos.forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', () => {
+modal.style.display = 'block';
+                modalImg.src = img.src;
+            });
+        });
+        closeModal.addEventListener('click', () => {
+           modal.style.display = 'none';
+            });
+        });
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+// Функция для создания временного iframe с автозапуском
+function createPlayerIframe(trackUrl, button, errorDiv) {
+    // Проверяем, есть ли уже плеер рядом с кнопкой
+    let existingPlayer = button.nextElementSibling;
+    if (existingPlayer && existingPlayer.classList && existingPlayer.classList.contains('temp-player')) {
+        existingPlayer.remove();
+        button.textContent = '▶️ Слушать трек';
+        return;
+    }
+    
+    // Создаём iframe
+    const iframe = document.createElement('iframe');
+    iframe.src = trackUrl;
+    iframe.width = '100%';
+    iframe.height = '80';
+    iframe.frameBorder = '0';
+    iframe.allow = 'autoplay; encrypted-media';
+    iframe.style.borderRadius = '16px';
+    iframe.style.marginTop = '0.5rem';
+    iframe.classList.add('temp-player');
+    
+    // Вставляем iframe после кнопки
+    button.insertAdjacentElement('afterend', iframe);
+    button.textContent = '⏸️ Скрыть плеер';
+    
+    // Обработчик ошибки
+    iframe.onerror = () => {
+        errorDiv.textContent = '⚠️ Не удалось загрузить плеер. Попробуйте позже.';
+        errorDiv.style.display = 'block';
+        setTimeout(() => {
+            errorDiv.style.display = 'none';
+        }, 5000);
+    };
+}
+
+// Назначаем обработчики на все кнопки треков
+document.querySelectorAll('.track-btn').forEach(btn => {
+    const trackUrl = btn.getAttribute('data-track');
+    const errorDiv = btn.nextElementSibling;
+    btn.addEventListener('click', () => {
+        createPlayerIframe(trackUrl, btn, errorDiv);
+    });
+});
+    </script>
+</body>
+</html>
